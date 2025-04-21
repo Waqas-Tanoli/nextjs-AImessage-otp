@@ -25,6 +25,9 @@ const verifyAccount = () => {
 
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
+    defaultValues: {
+      code: "",
+    },
   });
 
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
@@ -60,7 +63,10 @@ const verifyAccount = () => {
                 <FormItem>
                   <FormLabel>Verification code</FormLabel>
                   <FormControl>
-                    <Input placeholder="code" {...field} />
+                    <Input
+                      placeholder="Enter verification code here..."
+                      {...field}
+                    />
                   </FormControl>
 
                   <FormMessage />
